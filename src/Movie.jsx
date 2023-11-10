@@ -3,12 +3,12 @@
 import { NavLink } from "react-router-dom";
 
 const Movie = ({ movie }) => {
-    const { name, banner, date } = movie
+    const { name, banner, date, uniqueName } = movie
     const nameSlice = name.slice(0, 17) + '...'
     console.log(nameSlice);
     return (
         <div>
-            <NavLink>
+            <NavLink to={`/movie/${uniqueName}`}>
                 <div>
                     <img src={banner} alt="" />
                     <h1>{nameSlice}</h1>

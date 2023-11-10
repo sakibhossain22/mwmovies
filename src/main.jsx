@@ -9,6 +9,7 @@ import {
 import Root from './components/Root.jsx';
 import ErrorElement from './components/ErrorElement';
 import Home from './components/Home.jsx';
+import MovieDetails from './MovieDetails.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path : '/',
         element : <Home></Home>
+      },
+      {
+        path : '/movie/:uniqueName',
+        element : <MovieDetails></MovieDetails>
       }
     ]
   }

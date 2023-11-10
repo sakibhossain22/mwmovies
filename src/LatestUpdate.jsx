@@ -1,16 +1,20 @@
 /* eslint-disable react/prop-types */
 
+import { NavLink } from "react-router-dom";
+
 const LatestUpdate = ({ movie }) => {
-    const { name, banner, date } = movie
+    const { name, banner, date, uniqueName } = movie
     const nameSlice = name.slice(0, 25) + '...'
     return (
         <div>
-            <div>
-                <div className="flex gap-5  my-5 items-center justify-center">
-                    <img className="w-24" src={banner} alt="" />
-                    <h1>{nameSlice}</h1>
+            <NavLink to={`/movie/${uniqueName}`}>
+                <div>
+                    <div className="flex gap-5  my-5 items-center justify-center">
+                        <img className="w-24" src={banner} alt="" />
+                        <h1>{nameSlice}</h1>
+                    </div>
                 </div>
-            </div>
+            </NavLink>
         </div>
     );
 };
