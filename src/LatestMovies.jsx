@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
+import LatestUpdate from "./LatestUpdate";
 
 const LatestMovies = () => {
     const [movies, setMovies] = useState([])
@@ -10,7 +11,7 @@ const LatestMovies = () => {
             .then(data => setMovies(data))
     }, [])
     return (
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-10">
             <div className="col-span-8">
                 <div className="grid grid-cols-5 gap-5">
                     {
@@ -21,7 +22,7 @@ const LatestMovies = () => {
             <div className="col-span-4">
                 <div className="">
                     {
-                        movies.slice(0,5).map(movie => <Movie key={movie._id} movie={movie}></Movie>)
+                        movies.slice(0,5).map(movie => <LatestUpdate key={movie._id} movie={movie}></LatestUpdate>)
                     }
                 </div>
             </div>
