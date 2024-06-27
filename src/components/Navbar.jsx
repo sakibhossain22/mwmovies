@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { ImCross } from "react-icons/im";
 
 const Navbar = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const [search, setSearch] = useState(true)
     const navLink = <>
         <li tabIndex={0}>
             <details>
@@ -30,6 +35,21 @@ const Navbar = () => {
             </details>
         </li>
     </>
+    const params = useParams()
+    console.log(params);
+    const searchInput = () => {
+        setSearch(!search)
+    }
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const text = form.searchText.value.trim(); // Trim to remove leading/trailing spaces
+
+        if (!text) return; // Exit if the search text is empty
+
+        // Navigate with the search text as state or query parameter
+        navigate('/search-result', { state: { query: text } });
+    };
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -49,15 +69,38 @@ const Navbar = () => {
                         {navLink}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end invisible lg:visible">
                     <div className="relative mr-2">
-                        <input placeholder="Search Here ..." className="px-8 py-2 rounded-lg" type="text" />
-                        <button>
-                            <img className="absolute top-[8px] right-5 w-6 " src="https://i.ibb.co/LpbrKzV/icons8-search-50.png" alt="" />
-                        </button>
+                        <form onSubmit={handleSearch}>
+                            <input name="searchText" placeholder="Search Here ..." className="px-8 py-2 rounded-lg" type="text" />
+                            <button>
+                                <img className="absolute top-[8px] right-5 w-6 " src="https://i.ibb.co/LpbrKzV/icons8-search-50.png" alt="" />
+                            </button>
+                        </form>
                     </div>
                 </div>
+                <div className="navbar-end lg:invisible visible">
+                    <button onClick={() => searchInput()}>
+                        {
+                            search ?
+                                <img className="w-6 mr-3" src="https://i.ibb.co/LpbrKzV/icons8-search-50.png" alt="" />
+                                : <ImCross className="w-6 mr-3" />
+                        }
+                    </button>
+                </div>
             </div>
+            {
+                !search && <div className="mb-4">
+                    <div className="relative m-2">
+                        <form onSubmit={handleSearch}>
+                            <input placeholder="Search Here ..." className="px-8 py-2 w-full rounded" type="text" />
+                            <button>
+                                <img className="absolute top-[8px] right-5 w-6 " src="https://i.ibb.co/LpbrKzV/icons8-search-50.png" alt="" />
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
         </div>
     );
 };

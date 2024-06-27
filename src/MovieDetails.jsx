@@ -49,11 +49,12 @@ const MovieDetails = () => {
         fetchMovies();
     }, [originalName]);
 
-    if (!single) return <div>Loading...</div>;
+    if (!single) return <div className="flex items-center justify-center h-screen"><span className="loading loading-dots loading-lg"></span>
+    </div>;
 
     return (
         <div>
-            <div className="grid grid-cols-12 gap-5">
+            <div className="lg:grid grid-cols-12 gap-5">
                 <div className="col-span-9">
                     <div>
                         <div className="flex gap-4">
@@ -84,10 +85,11 @@ const MovieDetails = () => {
                         {/* Trailer */}
                         <div className="my-4">
                             <h1 className="border-l-2 px-2 border-red-600 text-xl">Trailer</h1>
-                            <iframe className="w-1/2 h-60 my-4" src={single?.trailer} ></iframe>
+                            <iframe className="lg:w-1/2 w-full h-60 my-4" src={single?.trailer} ></iframe>
                         </div>
                         {/* Description and download */}
                         <div>
+                        <h1 className="border-l-2 px-2 border-red-600 text-xl my-4">Description</h1>
                             <p>{single?.description}</p>
                             <div className="my-5">
                                 {
@@ -97,7 +99,7 @@ const MovieDetails = () => {
                             <hr className="my-2" />
                             <h1 className="border-l-2 px-2 border-red-600 font-bold text-xl">Download</h1>
                             {/* Download */}
-                            <div>
+                            <div className="mb-10">
                                 <div>
 
                                     <div className="overflow-x-auto">
@@ -111,7 +113,7 @@ const MovieDetails = () => {
                                                     <th>Size</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody className="lg:text-base md:text-base text-sm" >
                                                 {
                                                     single?.ep ? single?.ep?.filter(episode => episode.length > 2).map((episode, idx) => {
                                                         return (
@@ -188,7 +190,7 @@ const MovieDetails = () => {
                                                         </tr>
                                                     )
                                                 }
-                                              
+
                                             </tbody>
 
                                         </table>
@@ -200,6 +202,7 @@ const MovieDetails = () => {
                 </div>
                 <div className="col-span-3">
                     {/* Replace the following line with your component to display the latest updates */}
+                    <h1 className="border-l-2 px-2 border-red-600 text-xl">Latest Update</h1>
                     {all.slice(0, 5).map(movie => <LatestUpdate key={movie?._id} movie={movie}></LatestUpdate>)}
                 </div>
             </div>

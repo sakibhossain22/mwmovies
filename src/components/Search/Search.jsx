@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import Movie from "./Movie";
-import LatestUpdate from "./LatestUpdate";
-const LatestMovies = () => {
+import LatestUpdate from "../../LatestUpdate";
+import { useLoaderData } from "react-router-dom";
+const Search = () => {
+    const location = useLoaderData()
+    console.log(location);
     const [movies, setMovies] = useState([])
     useEffect(() => {
         fetch(`https://user-management-server-ten.vercel.app/movies`)
@@ -12,26 +14,23 @@ const LatestMovies = () => {
     </div>;
     return (
         <div className="lg:grid grid-cols-12 gap-14">
-            <div className="col-span-9">
-                <h1 className="border-l-2 mb-4 px-2 border-red-600 text-xl">Latest Movies</h1>
+            <div className="col-span-8">
+                <h1 className="border-l-2 mb-4 px-2 border-red-600 text-xl">Search : </h1>
 
-                <div className="grid lg:grid-cols-5 md:grid-cols-5 grid-cols-3 gap-5">
-
-                    {
-                        movies.map(movie => <Movie key={movie._id} movie={movie}></Movie>)
-                    }
+                <div>
+                    
                 </div>
             </div>
-            <div className="col-span-3">
-                <div className="">
+            <div className="col-span-4">
+                {/* <div className="">
                     <h1 className="border-l-2 px-2 border-red-600 text-xl">Latest Update</h1>
                     {
                         movies.slice(0, 5).map(movie => <LatestUpdate key={movie._id} movie={movie}></LatestUpdate>)
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     );
 };
 
-export default LatestMovies;
+export default Search;

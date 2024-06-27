@@ -10,6 +10,7 @@ import Root from './components/Root.jsx';
 import ErrorElement from './components/ErrorElement';
 import Home from './components/Home.jsx';
 import MovieDetails from './MovieDetails.jsx';
+import Search from './components/Search/Search.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path : '/movie/:uniqueName',
         element : <MovieDetails></MovieDetails>
+      },
+      {
+        path: '/search-result',
+        element : <Search></Search>
       }
     ]
   }

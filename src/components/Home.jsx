@@ -1,4 +1,4 @@
-import LatestMovies from "../LatestMovies.jsX";
+import LatestMovies from "../LatestMovies";
 
 const Home = () => {
     return (
