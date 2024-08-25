@@ -36,7 +36,6 @@ const Navbar = () => {
         </li>
     </>
     const params = useParams()
-    console.log(params);
     const searchInput = () => {
         setSearch(!search)
     }

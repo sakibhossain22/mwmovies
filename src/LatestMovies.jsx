@@ -3,6 +3,9 @@ import Movie from "./Movie";
 import LatestUpdate from "./LatestUpdate";
 const LatestMovies = () => {
     const [movies, setMovies] = useState([])
+
+
+
     useEffect(() => {
         fetch(`https://user-management-server-ten.vercel.app/movies`)
             .then(res => res.json())

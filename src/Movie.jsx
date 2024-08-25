@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import star from '../src/assets/star.png'
+import { NavLink, useNavigate } from "react-router-dom";
+import star from '../src/assets/star.png';
 
 const Movie = ({ movie }) => {
     const [uniqueName, setUniqueName] = useState();
@@ -36,7 +36,6 @@ const Movie = ({ movie }) => {
 
         determineMovieDetails();
     }, [movie]);
-
     return (
         <div>
             <NavLink to={`/movie/${uniqueName}`}>
@@ -49,9 +48,7 @@ const Movie = ({ movie }) => {
                         </div>
                     </div>
                     <h1 className="mt-2 text-sm text-white text-center">{nameTitle?.slice(0, 19) + '...'}</h1>
-                    {/* You can add additional information about the movie here */}
                     <span className="absolute top-1 left-1 bg-red-600 text-white px-2 text-sm">{movie?.quality}</span>
-
                 </div>
             </NavLink>
         </div>

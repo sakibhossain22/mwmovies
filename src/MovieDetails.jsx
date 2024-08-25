@@ -7,7 +7,6 @@ const MovieDetails = () => {
     const [all, setAll] = useState([]);
     const { uniqueName } = useParams();
     const originalName = uniqueName?.split('-').join(' ');
-    console.log(single);
     useEffect(() => {
         const fetchMovies = async () => {
             try {
